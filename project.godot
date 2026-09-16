@@ -15,10 +15,13 @@ DialogueManager="*res://scripts/adventure/dialogue_manager.gd"
 AdventureInput="*res://scripts/ui/adventure_input.gd"
 
 [display]
-window/size/viewport_width=960
-window/size/viewport_height=640
-window/stretch/mode="canvas_items"
+window/size/viewport_width=320
+window/size/viewport_height=200
+window/size/window_width_override=1280
+window/size/window_height_override=800
+window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+window/stretch/scale_mode="integer"
 
 [input]
 verb_walk={

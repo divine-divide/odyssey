@@ -51,8 +51,10 @@ func set_verb(verb: Verb) -> void:
 
 func verb_phrase() -> String:
 	var base: String = VERB_NAMES.get(current_verb, "Walk to")
-	if selected_item != "" and (current_verb == Verb.USE or current_verb == Verb.GIVE):
-		return "%s %s with" % [base, item_display_name(selected_item)]
+	if selected_item != "" and current_verb == Verb.USE:
+		return "%s %s on" % [base, item_display_name(selected_item)]
+	if selected_item != "" and current_verb == Verb.GIVE:
+		return "%s %s to" % [base, item_display_name(selected_item)]
 	return base
 
 func item_display_name(item_id: String) -> String:

@@ -38,4 +38,7 @@ Full voyage architecture for the Monkey Island–style point-and-click adaptatio
 Blind Polyphemus, hide under a ram, use the boulder at dawn → return to shore → episode complete (hook toward Aeolus).
 
 ## Framework verbs
-Walk / Look / Talk / Use / Pick Up / Give — plus inventory item selection for Use/Give.
+Walk to / Look at / Talk to / Use / Pick up / Give — plus inventory item selection for Use/Give.
+
+## Art lock
+Cyclops ships at **320×200** VGA / SCUMM MI2-era presentation (see `docs/ART.md`). Puzzle logic is independent of final paint.

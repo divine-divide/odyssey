@@ -12,6 +12,8 @@ First playable episode: **Cyclops** (stake, wine, “Nobody,” blind Polyphemus
 2. Press **F5** (or Play). Main scene: `scenes/main.tscn`.
 3. You start on the Cyclops shore with **Maronean Wine** in inventory.
 
+**Display:** native **320×200** VGA base, integer-scaled (SCUMM / MI2-era). See `docs/ART.md`.
+
 ### Optional headless smoke check
 If the Godot 4.5.1 Linux binary is available:
 
@@ -22,7 +24,7 @@ If the Godot 4.5.1 Linux binary is available:
 ## Controls
 | Input | Action |
 |-------|--------|
-| Verb bar / keys **W L T U P G** | Walk / Look / Talk / Use / Pick Up / Give |
+| Verb bar / keys **W L T U P G** | Walk to / Look at / Talk to / Use / Pick up / Give |
 | Click floor | Walk (when Walk is selected) |
 | Click hotspot | Apply current verb (walks there first) |
 | Click inventory item | Select for **Use** / **Give** |

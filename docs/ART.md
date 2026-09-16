@@ -1,26 +1,30 @@
-# Art Direction — VGA CD-ROM Vibe
+# Art Direction — VGA CD-ROM / SCUMM (MI2 era)
 
-Target feel: early–mid 90s adventure CD-ROMs (*Monkey Island 1/2*, *Fate of Atlantis*, *Broken Sword* VGA era).
+**AD LOCK for Cyclops (and voyage baseline):** classic LucasArts VGA adventure look — *Monkey Island 2* / early CD-ROM point-and-click. Not modern HD UI, not LCD/Tron chrome, not Batter’s Eye styling.
 
-## Palette & resolution
-- Native layout **960×640** (logical), pixel-art friendly; default texture filter **Nearest**.
-- Limited earth-and-wine palette: Aegean blues, olive greens, terracotta, charcoal, gold UI accents.
-- Hotspots readable as silhouettes even as colored rects (current placeholders).
+## Resolution
+- **Base:** `320×200` logical pixels.
+- **Upscale:** integer nearest-neighbor (`stretch/mode=viewport`, `scale_mode=integer`, texture filter **Nearest**).
+- Window override defaults to 1280×800 (4×) for comfortable play; keep pixels crisp.
 
-## Characters
-- Odysseus: compact hero sprite, clear walk cycle, exaggerated click-to-move readability.
-- Polyphemus: oversized cave silhouette, single glowing eye (red → ruined after the stake).
-- Sheep: fluffy blocking shapes; ram used for escape gag should read instantly.
+## Layout (SCUMM-like)
+| Band | Y range | Role |
+|------|---------|------|
+| Playfield | 0–144 | Painted room + chunky hotspots + walk box |
+| Sentence line | 146–158 | “Walk to Cave Mouth” command line |
+| Verb grid | 160–198 left | 3×2: Walk to / Look at / Talk to / Use / Pick up / Give |
+| Inventory | 160–198 right | Token strip for held items |
 
-## Rooms
-- **Painterly backgrounds** with strong warm cave light vs. cool shore sky.
-- Depth via parallax bands (sky / cliff / surf) once art lands.
-- Interactive props slightly oversaturated so verbs feel fair.
+## Palette
+- Aegean sky blues, olive/terracotta earth, charcoal cave, gold sentence accents.
+- Verb bar sits on deep indigo (`~#000059`), selected verb highlighted warm yellow — MI-era readability, not glass UI.
 
-## UI
-- Verb bar like SCUMM: chunky buttons, high-contrast labels.
-- Inventory as labeled tokens (icons later).
-- Dialogue in a parchment panel; speaker name in gold.
+## Placeholders (shippable)
+- **Painted-bg bands:** stacked `ColorRect` silhouettes (sky / cliff / surf / cave wall / floor) stand in for hand-painted rooms.
+- **Chunky hotspots:** oversized clickable blocks with short labels (CAVE, FIRE, SHEEP…).
+- Odysseus = tiny two-rect avatar; Polyphemus = big body + single red eye.
 
-## Placeholders
-Until final art: solid `ColorRect`s + `Label`s are intentional and shippable for puzzle QA.
+## Out of scope
+- No Batter’s Eye / LCD / Tron / neon HUD.
+- No modern flat Material UI, blur, or HD chrome.
+- Final sprite/paint pass should still read at 320×200 before upscale.

@@ -3,60 +3,91 @@
 [ext_resource type="Script" path="res://scripts/adventure/hotspot.gd" id="1_hotspot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
-size = Vector2(960, 360)
+size = Vector2(320, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs"]
-size = Vector2(140, 160)
+size = Vector2(48, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ship"]
-size = Vector2(160, 80)
+size = Vector2(56, 28)
 
 [node name="CaveExterior" type="Node2D"]
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 960.0
-offset_bottom = 480.0
+[node name="Sky" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 56.0
 mouse_filter = 2
-color = Color(0.35, 0.55, 0.75, 1)
+color = Color(0.45, 0.62, 0.82, 1)
+
+[node name="SkyBand" type="ColorRect" parent="."]
+offset_top = 40.0
+offset_right = 320.0
+offset_bottom = 56.0
+mouse_filter = 2
+color = Color(0.55, 0.7, 0.85, 1)
 
 [node name="Cliff" type="ColorRect" parent="."]
-offset_left = 480.0
-offset_top = 80.0
-offset_right = 960.0
-offset_bottom = 480.0
+offset_left = 160.0
+offset_top = 24.0
+offset_right = 320.0
+offset_bottom = 144.0
 mouse_filter = 2
-color = Color(0.45, 0.4, 0.35, 1)
+color = Color(0.42, 0.36, 0.28, 1)
 
-[node name="Sea" type="ColorRect" parent="."]
-offset_top = 360.0
-offset_right = 480.0
-offset_bottom = 480.0
+[node name="CliffShade" type="ColorRect" parent="."]
+offset_left = 160.0
+offset_top = 24.0
+offset_right = 176.0
+offset_bottom = 144.0
 mouse_filter = 2
-color = Color(0.15, 0.3, 0.55, 1)
+color = Color(0.28, 0.24, 0.18, 1)
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_top = 100.0
+offset_right = 160.0
+offset_bottom = 144.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.28, 1)
+
+[node name="Surf" type="ColorRect" parent="."]
+offset_top = 118.0
+offset_right = 160.0
+offset_bottom = 144.0
+mouse_filter = 2
+color = Color(0.18, 0.35, 0.58, 1)
+
+[node name="SurfFoam" type="ColorRect" parent="."]
+offset_top = 118.0
+offset_right = 160.0
+offset_bottom = 122.0
+mouse_filter = 2
+color = Color(0.7, 0.8, 0.9, 1)
 
 [node name="Title" type="Label" parent="."]
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 500.0
-offset_bottom = 40.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 200.0
+offset_bottom = 12.0
 mouse_filter = 2
-theme_override_font_sizes/font_size = 22
-text = "Cyclops — Shore & Cave Mouth"
+theme_override_colors/font_color = Color(0.15, 0.1, 0.05, 1)
+theme_override_font_sizes/font_size = 8
+text = "Cyclops — Shore"
 
 [node name="StatusLabel" type="Label" parent="."]
-offset_left = 16.0
-offset_top = 40.0
-offset_right = 900.0
-offset_bottom = 64.0
+offset_left = 2.0
+offset_top = 11.0
+offset_right = 318.0
+offset_bottom = 22.0
 mouse_filter = 2
-theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_colors/font_color = Color(0.95, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 8
 text = ""
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(200, 400)
+position = Vector2(64, 128)
 
 [node name="Floor" type="Area2D" parent="."]
-position = Vector2(480, 300)
+position = Vector2(160, 120)
 collision_layer = 1
 collision_mask = 0
 
@@ -64,7 +95,7 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_floor")
 
 [node name="EnterCave" type="Area2D" parent="."]
-position = Vector2(700, 280)
+position = Vector2(236, 88)
 script = ExtResource("1_hotspot")
 hotspot_id = "enter_cave"
 display_name = "Cave Mouth"
@@ -73,24 +104,34 @@ display_name = "Cave Mouth"
 shape = SubResource("RectangleShape2D_hs")
 
 [node name="Visual" type="ColorRect" parent="EnterCave"]
-offset_left = -70.0
-offset_top = -80.0
-offset_right = 70.0
-offset_bottom = 80.0
+offset_left = -24.0
+offset_top = -28.0
+offset_right = 24.0
+offset_bottom = 28.0
 mouse_filter = 2
-color = Color(0.08, 0.08, 0.1, 1)
+color = Color(0.05, 0.04, 0.06, 1)
+
+[node name="Rim" type="ColorRect" parent="EnterCave"]
+offset_left = -26.0
+offset_top = -30.0
+offset_right = 26.0
+offset_bottom = -26.0
+mouse_filter = 2
+color = Color(0.55, 0.45, 0.3, 1)
 
 [node name="Label" type="Label" parent="EnterCave"]
-offset_left = -60.0
-offset_top = -20.0
-offset_right = 60.0
-offset_bottom = 20.0
+offset_left = -20.0
+offset_top = -6.0
+offset_right = 20.0
+offset_bottom = 8.0
 mouse_filter = 2
+theme_override_colors/font_color = Color(0.8, 0.75, 0.6, 1)
+theme_override_font_sizes/font_size = 8
 text = "CAVE"
 horizontal_alignment = 1
 
 [node name="Ship" type="Area2D" parent="."]
-position = Vector2(160, 420)
+position = Vector2(48, 132)
 script = ExtResource("1_hotspot")
 hotspot_id = "ship"
 display_name = "Black Ship"
@@ -98,29 +139,29 @@ display_name = "Black Ship"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ship"]
 shape = SubResource("RectangleShape2D_ship")
 
-[node name="Visual" type="ColorRect" parent="Ship"]
-offset_left = -80.0
-offset_top = -40.0
-offset_right = 80.0
-offset_bottom = 40.0
+[node name="Hull" type="ColorRect" parent="Ship"]
+offset_left = -28.0
+offset_top = -8.0
+offset_right = 28.0
+offset_bottom = 12.0
 mouse_filter = 2
-color = Color(0.12, 0.1, 0.1, 1)
+color = Color(0.08, 0.06, 0.05, 1)
+
+[node name="Sail" type="ColorRect" parent="Ship"]
+offset_left = -4.0
+offset_top = -22.0
+offset_right = 16.0
+offset_bottom = -8.0
+mouse_filter = 2
+color = Color(0.75, 0.72, 0.65, 1)
 
 [node name="Label" type="Label" parent="Ship"]
-offset_left = -70.0
-offset_top = -12.0
-offset_right = 70.0
-offset_bottom = 16.0
+offset_left = -24.0
+offset_top = -6.0
+offset_right = 24.0
+offset_bottom = 6.0
 mouse_filter = 2
+theme_override_colors/font_color = Color(0.85, 0.8, 0.7, 1)
+theme_override_font_sizes/font_size = 7
 text = "SHIP"
 horizontal_alignment = 1
-
-[node name="Hint" type="Label" parent="."]
-offset_left = 16.0
-offset_top = 448.0
-offset_right = 700.0
-offset_bottom = 472.0
-mouse_filter = 2
-theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
-text = "Use or Walk to the cave mouth to enter. Look / Talk work on hotspots."
