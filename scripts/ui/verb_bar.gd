@@ -1,5 +1,5 @@
 extends GridContainer
-## Classic SCUMM 3×2 verb grid — chunky VGA labels, no modern chrome.
+## Classic SCUMM 3×2 verb grid — chunky VGA labels, Tiny5 pixel font.
 
 const VERBS := [
 	[GameState.Verb.WALK, "Walk to"],
@@ -24,7 +24,7 @@ func _ready() -> void:
 		btn.toggle_mode = true
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.custom_minimum_size = Vector2(52, 16)
-		btn.add_theme_font_size_override("font_size", 8)
+		PixelUI.apply_button(btn, PixelUI.SIZE_UI)
 		btn.pressed.connect(_on_verb_pressed.bind(verb))
 		_style_verb_button(btn, false)
 		add_child(btn)
@@ -34,17 +34,19 @@ func _ready() -> void:
 
 func _style_verb_button(btn: Button, selected: bool) -> void:
 	var normal := StyleBoxFlat.new()
-	normal.bg_color = Color(0.05, 0.05, 0.4) if not selected else Color(0.25, 0.15, 0.55)
-	normal.border_color = Color(0.7, 0.7, 0.9) if selected else Color(0.35, 0.35, 0.55)
+	# Deep indigo bar always; selected = warm yellow text (docs/ART.md), not purple.
+	normal.bg_color = PixelUI.INDIGO
+	normal.border_color = PixelUI.INDIGO_BORDER_SEL if selected else PixelUI.INDIGO_BORDER
 	normal.set_border_width_all(1)
 	normal.set_content_margin_all(2)
 	btn.add_theme_stylebox_override("normal", normal)
 	btn.add_theme_stylebox_override("pressed", normal)
 	btn.add_theme_stylebox_override("hover", normal)
 	btn.add_theme_stylebox_override("focus", normal)
-	btn.add_theme_color_override("font_color", Color(0.95, 0.95, 0.55) if selected else Color(0.75, 0.75, 0.95))
-	btn.add_theme_color_override("font_pressed_color", Color(0.95, 0.95, 0.55))
-	btn.add_theme_color_override("font_hover_color", Color(1, 1, 0.7))
+	var fc := PixelUI.VERB_SELECTED if selected else PixelUI.VERB_IDLE
+	btn.add_theme_color_override("font_color", fc)
+	btn.add_theme_color_override("font_pressed_color", PixelUI.VERB_SELECTED)
+	btn.add_theme_color_override("font_hover_color", PixelUI.VERB_HOVER)
 
 func _on_verb_pressed(verb: int) -> void:
 	GameState.set_verb(verb)

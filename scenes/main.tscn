@@ -134,4 +134,4 @@ theme_override_constants/separation = 1
 [node name="Continue" type="Button" parent="UI/DialogueUI/Panel/Margin/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "Continue"
+text = "▼  (click)"

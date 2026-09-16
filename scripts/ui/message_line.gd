@@ -1,9 +1,10 @@
 extends Label
-## Bottom command / narration line.
+## Bottom command / narration line — pixel font.
 
 var _tween: Tween
 
 func _ready() -> void:
+	PixelUI.apply_label(self, PixelUI.SIZE_UI)
 	text = ""
 	GameState.message_requested.connect(show_message)
 	GameState.verb_changed.connect(func(_v): _refresh_prompt())

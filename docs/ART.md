@@ -15,14 +15,25 @@
 | Verb grid | 160–198 left | 3×2: Walk to / Look at / Talk to / Use / Pick up / Give |
 | Inventory | 160–198 right | Token strip for held items |
 
+## Typography
+- Bundle **Tiny5** (SIL OFL) under `assets/fonts/` for verbs, sentence line, inventory, and dialogue.
+- Default Godot UI font is banned at 4× — it kills VGA read. Pixel font only.
+
 ## Palette
 - Aegean sky blues, olive/terracotta earth, charcoal cave, gold sentence accents.
-- Verb bar sits on deep indigo (`~#000059`), selected verb highlighted warm yellow — MI-era readability, not glass UI.
+- Verb bar sits on deep indigo (`~#000059`), **selected verb = warm yellow** text/border — MI-era readability, not purple chrome, not glass UI.
+
+## Hotspots & debug chrome
+- **No always-on hotspot nameplates** (no CAVE / SHIP / WOOD on the playfield). Names appear only on the **sentence line** on hover.
+- Room **Title** + **StatusLabel** stay hidden in play; set `GameState.debug_show_room_chrome = true` for debug.
 
 ## Placeholders (shippable)
 - **Painted-bg bands:** stacked `ColorRect` silhouettes (sky / cliff / surf / cave wall / floor) stand in for hand-painted rooms.
-- **Chunky hotspots:** oversized clickable blocks with short labels (CAVE, FIRE, SHEEP…).
+- **Chunky hotspots:** oversized clickable blocks (visual silhouette only).
 - Odysseus = tiny two-rect avatar; Polyphemus = big body + single red eye.
+
+## Dialogue chrome
+- Continue is MI-style text / click-through — no Material button chrome.
 
 ## Out of scope
 - No Batter’s Eye / LCD / Tron / neon HUD.
