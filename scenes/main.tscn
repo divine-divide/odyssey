@@ -20,7 +20,7 @@ move_speed = 90.0
 
 [node name="Visual" type="Sprite2D" parent="RoomHost/Player"]
 texture_filter = 0
-position = Vector2(0, -9)
+position = Vector2(0, -18)
 texture = ExtResource("7_idle")
 
 [node name="UI" type="CanvasLayer" parent="."]

@@ -28,52 +28,62 @@
 | Role | Hex |
 |------|-----|
 | Sky | `#739ED1`, `#8CB2D9` |
-| Sea | `#2E598F`, foam `#B3CCE6`, **deeper sea `#244773`** *(v2)* |
-| Cliff / earth | `#6B5C47`, `#473C2E`, `#80734A`, **mid rock `#5A4E3A`** *(v2)* |
+| Sea | `#2E598F`, foam `#B3CCE6`, deeper `#244773`, **deepest trough `#1A365C`** *(v3)* |
+| Cliff / earth | `#6B5C47`, `#473C2E`, `#80734A`, mid `#5A4E3A` |
+| Grass tufts | **`#6A7A3A`** *(v3)* |
 | Cave | `#2E1F14`, `#1F170F`, `#47331F` |
-| Skin | `#D9A673`, **skin shadow `#C48E5C`** *(v2)* |
-| Odysseus tunic | `#2659B3` |
+| Skin | `#D9A673`, shadow `#C48E5C` |
+| Odysseus tunic | `#2659B3`, **fold shade `#1A3F8A`** *(v3)* |
 | Wood | `#52381A`, `#3D2B14` |
 | Fire | `#D95914`, `#FFD940` |
 | Sheep | `#D1CCB8`, `#26201A` |
-| Polyphemus | `#85664D`, eye `#E6261A`, **shade `#6E523C`** *(v2)* |
+| Polyphemus | `#85664D`, eye `#E6261A`, shade `#6E523C` |
 | Ship | hull `#14100D`, sail `#BFB8A6` |
 | UI gold accent | `#F2E040` (icons / buckle) |
-| Cheese (prop clutter) | **`#E8C85A`** *(v2, gold-adjacent)* |
+| Cheese (prop clutter) | `#E8C85A` |
+| Bone / bleach clutter | **`#C8C0A8`** *(v3)* |
 | Transparent | fully transparent for sprites/icons |
 
-### v2 palette additions (4 related shades)
-Documented for dither / silhouette only — stay hard-edged VGA, no new hue families:
-1. `#244773` — deeper sea (wave dither)
-2. `#5A4E3A` — mid cliff grain
-3. `#C48E5C` — skin shadow / sandal strap
-4. `#6E523C` — Polyphemus body shade / tunic dither  
-Plus cheese `#E8C85A` for cave prop clutter (warm gold neighbor).
+### Palette additions by version
+**v2:** `#244773`, `#5A4E3A`, `#C48E5C`, `#6E523C`, `#E8C85A`
+
+**v3 (4 related shades):**
+1. `#1A365C` — deepest sea trough / wave dither
+2. `#1A3F8A` — Odysseus tunic fold shade
+3. `#C8C0A8` — bone piles / bleached clutter
+4. `#6A7A3A` — beach / cliff-top grass tufts
 
 ## Hotspots & debug chrome
 - **No always-on hotspot nameplates** (no CAVE / SHIP / WOOD on the playfield). Names appear only on the **sentence line** on hover.
 - Room **Title** + **StatusLabel** stay hidden in play; set `GameState.debug_show_room_chrome = true` for debug.
-- **CollisionShape2D sizes stay fixed** — art swaps ColorRect visuals only (Sprite2D / TextureRect). Align sprites over existing colliders.
+- **CollisionShape2D sizes stay fixed** — art swaps ColorRect visuals only (Sprite2D / TextureRect). Align sprites over existing colliders; larger art may overhang — do not grow colliders.
 
-## Cyclops pixel pack (`assets/cyclops/`) — **v2 denser MI detail**
+## Cyclops pixel pack (`assets/cyclops/`) — **v3 denser MI detail + size bumps**
 Early-90s CD-ROM VGA: **Monkey Island 1/2 VGA** outdoor/interior read + **Legend of Zelda CD-ROM** chunky prop silhouettes.
 
 - Chunky **visible pixels**; hard edges only
 - **Limited fixed palette** (no blending, no gradients that invent new colors)
 - **NO** modern HD, smooth anti-alias, Batter’s Eye LCD sheen, or Tron neon
-- **v2 denser MI detail** — dithered terrain/prop texture, prop clutter, readable silhouettes (not flat color bands)
+- **v3 denser MI detail** — dithered terrain/prop texture, prop clutter, readable silhouettes; **larger characters** than v1/v2
 
-### Sprite scale rules
-- **Odysseus** = **12×22** (idle + walk1/walk2; optional **walk3**) — hair, nose profile, two eyes, belt, sandals
-- Props stay **chunky and hit-readable** at VGA (ship 56×34, cave mouth 48×56, Polyphemus 52×72, sheep 48×28, fire 28×28, wood 36×24, stake 16×28)
-- **Polyphemus** optional extras: `polyphemus_idle.png`, `polyphemus_blink.png` (same 52×72)
-- Inventory icons exactly **16×16**, transparent BG
+### Sprite scale rules (v3 — SIZE CHANGES)
+| Asset | Size | Notes |
+|-------|------|--------|
+| **Odysseus** idle + walk1/2/3 | **20×36** | Was 12×22 — STOP using old size |
+| **Polyphemus** + idle + blink | **72×100** | Was 52×72 — STOP using old size |
+| ship | **64×40** | Was 56×34 |
+| cave_mouth | **56×64** | Was 48×56 |
+| sheep | **56×34** | Was 48×28 |
+| fire | **32×32** | Was 28×28 |
+| olive_wood | **40×28** | Was 36×24 |
+| stake / hot_stake | **18×32** | Was 16×28 |
+| inv_* icons | **16×16** | Unchanged — richer but legible |
 
 ### Background rules
 - Painted **bands / big shapes** plus **dense dither** (sky → sea foam → beach pebbles → cliff grain; cave wall rock → stalactites → floor debris)
 - No photo reference paste, no HD detail, no soft fog
-- Cave interiors: rock texture, stalactites, cheese wheels, bone pile, sheep-pen rails — clear floor strip so props read on top
-- Shore: left sea/beach/sky with foam dither + distant hills; right rocky cliff with **recessed** cave mouth (depth/shadow, not a flat door)
+- **Shore:** ship silhouette **painted ON the water** (left); richer foam/wave dither; rock strata on cliff; beach debris/rocks/grass; cave mouth **carved** with rim + recess + dark interior
+- **Cave:** cheese racks, sheep pens with rails, fire pit area, bone/clutter piles, wall depth + stalactites — clear floor strip so props read on top
 
 ### Z-order
 | Layer | z |
@@ -83,7 +93,7 @@ Early-90s CD-ROM VGA: **Monkey Island 1/2 VGA** outdoor/interior read + **Legend
 | Player | `10` |
 
 ### Integration
-- Shore: single `bg_shore` Sprite2D @ `(0,0)` (top-left); `cave_mouth` on EnterCave; `ship` sprite; Odysseus idle + walk frames (walk3 optional)
+- Shore: single `bg_shore` Sprite2D @ `(0,0)` (top-left); `cave_mouth` on EnterCave; `ship` sprite; Odysseus idle + walk frames (walk3)
 - Cave: `bg_cave`; Polyphemus / sheep / fire / olive wood sprites (optional idle/blink frames for Polyphemus)
 - **Boulder:** no asset — ColorRect placeholder OK
 - InventoryBar: wine / olive_wood / stake / hot_stake → `inv_*.png`
