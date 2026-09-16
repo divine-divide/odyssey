@@ -1,10 +1,15 @@
 extends Label
 ## Bottom command / narration line — pixel font.
+## Wraps inside the sentence band (never into the verb/inventory row).
 
 var _tween: Tween
 
 func _ready() -> void:
 	PixelUI.apply_label(self, PixelUI.SIZE_UI)
+	autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	max_lines_visible = 2
+	vertical_alignment = VERTICAL_ALIGNMENT_TOP
+	clip_text = false
 	text = ""
 	GameState.message_requested.connect(show_message)
 	GameState.verb_changed.connect(func(_v): _refresh_prompt())
