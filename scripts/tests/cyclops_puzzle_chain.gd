@@ -65,8 +65,44 @@ func _run() -> void:
 		return
 	ep._escape()
 	await process_frame
+	await process_frame
 	if not GS.get_flag("cyclops_escaped"):
 		push_error("Escape failed")
+		quit(1)
+		return
+	# Shore coda: boast → curse → win (not win on escape alone)
+	if GS.get_flag("adventure_won_fired"):
+		push_error("Win fired before shore boast")
+		quit(1)
+		return
+	# Drive coda: boast path choice 0, then continues through curse/coda_end
+	var DM: Node = root.get_node("DialogueManager")
+	if not DM.active:
+		# Coda may need re-start if room load raced; Talk ship path
+		ep._talk("ship")
+	await process_frame
+	if DM.active:
+		DM.choose(0)  # boast
+		await process_frame
+		# boast → curse (auto next), then continue curse → coda_end → end
+		while DM.active:
+			DM.continue_line()
+			await process_frame
+	if not GS.get_flag("shore_boast_done"):
+		push_error("Shore boast/curse did not complete")
+		quit(1)
+		return
+	if not GS.get_flag("adventure_won_fired") and not GS.get_flag("cyclops_escaped"):
+		push_error("Win did not fire after coda")
+		quit(1)
+		return
+	# dialogue_ended hook should have fired win
+	await process_frame
+	if not GS.get_flag("adventure_won_fired"):
+		# Fallback if continue_line ended without emitting in same frame
+		ep._on_dialogue_ended()
+	if not GS.get_flag("adventure_won_fired"):
+		push_error("adventure_won_fired not set after coda")
 		quit(1)
 		return
 	print("CYCLOPS_PUZZLE_CHAIN_OK")

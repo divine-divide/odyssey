@@ -18,14 +18,14 @@ func _rebuild() -> void:
 		btn.custom_minimum_size = Vector2(44, 24)
 		btn.toggle_mode = true
 		btn.button_pressed = (GameState.selected_item == item_id)
-		btn.add_theme_font_size_override("font_size", 7)
+		PixelUI.apply_button(btn, PixelUI.SIZE_SMALL)
 		_style_item(btn, GameState.selected_item == item_id)
 		btn.pressed.connect(_on_item_pressed.bind(item_id))
 		add_child(btn)
 	if GameState.inventory.is_empty():
 		var empty := Label.new()
 		empty.text = "(none)"
-		empty.add_theme_font_size_override("font_size", 8)
+		PixelUI.apply_label(empty, PixelUI.SIZE_UI)
 		empty.add_theme_color_override("font_color", Color(0.5, 0.5, 0.65))
 		add_child(empty)
 

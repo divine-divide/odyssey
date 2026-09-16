@@ -44,6 +44,7 @@ mouse_filter = 2
 color = Color(0.4, 0.28, 0.15, 1)
 
 [node name="Title" type="Label" parent="."]
+visible = false
 offset_left = 2.0
 offset_top = 1.0
 offset_right = 200.0
@@ -54,6 +55,7 @@ theme_override_font_sizes/font_size = 8
 text = "Cyclops — Cave"
 
 [node name="StatusLabel" type="Label" parent="."]
+visible = false
 offset_left = 2.0
 offset_top = 11.0
 offset_right = 318.0
@@ -100,6 +102,7 @@ mouse_filter = 2
 color = Color(0.9, 0.15, 0.1, 1)
 
 [node name="PolyphemusLabel" type="Label" parent="."]
+visible = false
 offset_left = 214.0
 offset_top = 36.0
 offset_right = 286.0
@@ -128,6 +131,7 @@ mouse_filter = 2
 color = Color(0.32, 0.22, 0.1, 1)
 
 [node name="Label" type="Label" parent="OliveWood"]
+visible = false
 offset_left = -16.0
 offset_top = -4.0
 offset_right = 16.0
@@ -164,6 +168,7 @@ mouse_filter = 2
 color = Color(1, 0.85, 0.25, 1)
 
 [node name="Label" type="Label" parent="Fire"]
+visible = false
 offset_left = -14.0
 offset_top = -4.0
 offset_right = 14.0
@@ -192,6 +197,7 @@ mouse_filter = 2
 color = Color(0.82, 0.8, 0.72, 1)
 
 [node name="Label" type="Label" parent="Sheep"]
+visible = false
 offset_left = -20.0
 offset_top = -5.0
 offset_right = 20.0
@@ -220,6 +226,7 @@ mouse_filter = 2
 color = Color(0.38, 0.38, 0.4, 1)
 
 [node name="Label" type="Label" parent="Boulder"]
+visible = false
 offset_left = -16.0
 offset_top = -6.0
 offset_right = 16.0
@@ -248,6 +255,7 @@ mouse_filter = 2
 color = Color(0.2, 0.35, 0.5, 1)
 
 [node name="Label" type="Label" parent="ExitToSea"]
+visible = false
 offset_left = -14.0
 offset_top = -5.0
 offset_right = 14.0

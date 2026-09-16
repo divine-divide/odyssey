@@ -12,7 +12,7 @@ First playable episode: **Cyclops** (stake, wine, “Nobody,” blind Polyphemus
 2. Press **F5** (or Play). Main scene: `scenes/main.tscn`.
 3. You start on the Cyclops shore with **Maronean Wine** in inventory.
 
-**Display:** native **320×200** VGA base, integer-scaled (SCUMM / MI2-era). See `docs/ART.md`.
+**Display:** native **320×200** VGA base, integer-scaled (SCUMM / MI2-era). UI uses bundled **Tiny5** (OFL) pixel font. See `docs/ART.md`.
 
 ### Optional headless smoke check
 If the Godot 4.5.1 Linux binary is available:
@@ -38,7 +38,8 @@ If the Godot 4.5.1 Linux binary is available:
 6. **Use** Wooden Stake on the **Fire** → **Burning Stake**.
 7. **Use** Burning Stake on sleeping **Polyphemus** → blind him.
 8. **Pick up** / **Use** the **Sheep** → hide under the ram.
-9. **Use** the **Boulder Door** → escape to shore; episode complete.
+9. **Use** the **Boulder Door** → escape to shore.
+10. Shore coda: boast your true name → Polyphemus curses you to Poseidon → episode complete.
 
 ## Docs
 - [`docs/EPISODES.md`](docs/EPISODES.md) — full voyage map

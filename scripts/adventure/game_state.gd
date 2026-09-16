@@ -35,6 +35,8 @@ var selected_item: String = ""
 var current_room: String = "cave_exterior"
 var dialogue_open: bool = false
 var input_locked: bool = false
+## When true, room Title/StatusLabel show on playfield (dev only).
+var debug_show_room_chrome: bool = false
 
 func _ready() -> void:
 	# Starting kit for Cyclops episode — wine brought from the ships.
