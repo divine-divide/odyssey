@@ -11,9 +11,9 @@
 | Band | Y range | Role |
 |------|---------|------|
 | Playfield | 0–144 | Painted room + chunky hotspots + walk box |
-| Sentence line | 146–158 | “Walk to Cave Mouth” command line |
-| Verb grid | 160–198 left | 3×2: Walk to / Look at / Talk to / Use / Pick up / Give |
-| Inventory | 160–198 right | Token strip for held items |
+| Sentence line | 146–166 | “Walk to Cave Mouth” command/narration (wrap ≤2 lines; never into inventory) |
+| Verb grid | 168–198 left | 3×2: Walk to / Look at / Talk to / Use / Pick up / Give |
+| Inventory | 168–198 right | Token strip for held items |
 
 ## Typography
 - Bundle **Tiny5** (SIL OFL) under `assets/fonts/` for verbs, sentence line, inventory, and dialogue.
