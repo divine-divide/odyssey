@@ -1,6 +1,13 @@
 extends HBoxContainer
 ## Chunky inventory tokens — VGA inventory strip (MI2-era feel).
 
+const ITEM_ICONS := {
+	"wine": "res://assets/cyclops/inv_wine.png",
+	"olive_wood": "res://assets/cyclops/inv_wood.png",
+	"stake": "res://assets/cyclops/inv_stake.png",
+	"hot_stake": "res://assets/cyclops/inv_hot_stake.png",
+}
+
 func _ready() -> void:
 	add_theme_constant_override("separation", 2)
 	GameState.inventory_changed.connect(_rebuild)
@@ -12,12 +19,19 @@ func _rebuild() -> void:
 		child.queue_free()
 	for item_id in GameState.inventory:
 		var btn := Button.new()
-		btn.text = _short_name(item_id)
 		btn.tooltip_text = GameState.item_display_name(item_id)
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.custom_minimum_size = Vector2(44, 24)
 		btn.toggle_mode = true
 		btn.button_pressed = (GameState.selected_item == item_id)
+		var icon_path: String = ITEM_ICONS.get(item_id, "")
+		if icon_path != "":
+			btn.icon = load(icon_path)
+			btn.expand_icon = true
+			btn.text = ""
+			btn.custom_minimum_size = Vector2(24, 24)
+		else:
+			btn.text = _short_name(item_id)
 		PixelUI.apply_button(btn, PixelUI.SIZE_SMALL)
 		_style_item(btn, GameState.selected_item == item_id)
 		btn.pressed.connect(_on_item_pressed.bind(item_id))
