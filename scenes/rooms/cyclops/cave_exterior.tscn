@@ -1,0 +1,126 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyclops_ext"]
+
+[ext_resource type="Script" path="res://scripts/adventure/hotspot.gd" id="1_hotspot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(960, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs"]
+size = Vector2(140, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ship"]
+size = Vector2(160, 80)
+
+[node name="CaveExterior" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 960.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.35, 0.55, 0.75, 1)
+
+[node name="Cliff" type="ColorRect" parent="."]
+offset_left = 480.0
+offset_top = 80.0
+offset_right = 960.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.45, 0.4, 0.35, 1)
+
+[node name="Sea" type="ColorRect" parent="."]
+offset_top = 360.0
+offset_right = 480.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.15, 0.3, 0.55, 1)
+
+[node name="Title" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 500.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 22
+text = "Cyclops — Shore & Cave Mouth"
+
+[node name="StatusLabel" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 900.0
+offset_bottom = 64.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+text = ""
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(200, 400)
+
+[node name="Floor" type="Area2D" parent="."]
+position = Vector2(480, 300)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="EnterCave" type="Area2D" parent="."]
+position = Vector2(700, 280)
+script = ExtResource("1_hotspot")
+hotspot_id = "enter_cave"
+display_name = "Cave Mouth"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterCave"]
+shape = SubResource("RectangleShape2D_hs")
+
+[node name="Visual" type="ColorRect" parent="EnterCave"]
+offset_left = -70.0
+offset_top = -80.0
+offset_right = 70.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.08, 0.08, 0.1, 1)
+
+[node name="Label" type="Label" parent="EnterCave"]
+offset_left = -60.0
+offset_top = -20.0
+offset_right = 60.0
+offset_bottom = 20.0
+mouse_filter = 2
+text = "CAVE"
+horizontal_alignment = 1
+
+[node name="Ship" type="Area2D" parent="."]
+position = Vector2(160, 420)
+script = ExtResource("1_hotspot")
+hotspot_id = "ship"
+display_name = "Black Ship"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship"]
+shape = SubResource("RectangleShape2D_ship")
+
+[node name="Visual" type="ColorRect" parent="Ship"]
+offset_left = -80.0
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.12, 0.1, 0.1, 1)
+
+[node name="Label" type="Label" parent="Ship"]
+offset_left = -70.0
+offset_top = -12.0
+offset_right = 70.0
+offset_bottom = 16.0
+mouse_filter = 2
+text = "SHIP"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 448.0
+offset_right = 700.0
+offset_bottom = 472.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+text = "Use or Walk to the cave mouth to enter. Look / Talk work on hotspots."
